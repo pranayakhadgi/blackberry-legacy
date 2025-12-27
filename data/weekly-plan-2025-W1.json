@@ -1,0 +1,78 @@
+{
+  "weekId": "2025-W1",
+  "days": {
+    "2025-12-29": {
+      "date": "2025-12-29",
+      "tasks": [
+        {
+          "id": "1",
+          "description": "CS 301 Algorithms Ch5",
+          "completed": false,
+          "priority": "HIGH",
+          "estimatedTime": "90m"
+        },
+        {
+          "id": "2",
+          "description": "Spring Boot Project Milestone",
+          "completed": false,
+          "priority": "CRITICAL",
+          "estimatedTime": "120m"
+        },
+        {
+          "id": "3",
+          "description": "Review Java 17 features",
+          "completed": false,
+          "priority": "MEDIUM",
+          "estimatedTime": "45m"
+        }
+      ],
+      "plannedTime": "4h 15m"
+    },
+    "2025-12-30": {
+      "date": "2025-12-30",
+      "tasks": [
+        {
+          "id": "1",
+          "description": "Complete algorithm assignment",
+          "completed": false,
+          "priority": "CRITICAL",
+          "estimatedTime": "180m"
+        },
+        {
+          "id": "2",
+          "description": "Test BlackBerry Z10 integration",
+          "completed": false,
+          "priority": "HIGH",
+          "estimatedTime": "60m"
+        }
+      ],
+      "plannedTime": "4h"
+    },
+    "2025-12-31": {
+      "date": "2025-12-31",
+      "tasks": [
+        {
+          "id": "1",
+          "description": "New Year preparation",
+          "completed": false,
+          "priority": "LOW",
+          "estimatedTime": "30m"
+        }
+      ],
+      "plannedTime": "30m"
+    }
+  },
+  "resources": [
+    {
+      "title": "Java Documentation",
+      "url": "https://docs.oracle.com/javase/17/docs/api/",
+      "category": "Code"
+    },
+    {
+      "title": "Algorithm Resources",
+      "url": "https://html.duckduckgo.com/?q=algorithms",
+      "category": "College"
+    }
+  ]
+}
+
