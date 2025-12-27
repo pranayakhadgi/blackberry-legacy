@@ -6,6 +6,8 @@ This started as a curiosity experiment: **could my old BlackBerry Z10 sitting in
 
 The answer: sort of, but not really. This experiment cleared most of my curiosity, but I intentionally stopped here once the core limitations became clear.
 
+![IMG_7139](https://github.com/user-attachments/assets/a170ceac-b76a-4816-bfdb-8038bcc3c784)
+
 ## The Experiment
 
 The idea was simple: use a legacy BlackBerry Z10 as a minimal productivity workspace by offloading all computation to a Java HTTP server running on my laptop. In a simple sense, I wanted to make a dumb phone for a good digital detox. The phone would act purely as a simple interface for simple tasks such as to-do list, navigation, music player and if possible, have a terminal interface to try mobile programming.
