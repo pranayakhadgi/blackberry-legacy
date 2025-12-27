@@ -8,7 +8,7 @@ The answer: sort of, but not really. This experiment cleared most of my curiosit
 
 ## The Experiment
 
-The idea was simple: use a legacy BlackBerry Z10 as a minimal productivity workspace by offloading all computation to a Java HTTP server running on my laptop. In a simple sense, I wanted to make a dumb phone for a good digital detox. The phone would act purely as a thin web client—no apps, no distractions, just a simple interface for checklists and curated resources.
+The idea was simple: use a legacy BlackBerry Z10 as a minimal productivity workspace by offloading all computation to a Java HTTP server running on my laptop. In a simple sense, I wanted to make a dumb phone for a good digital detox. The phone would act purely as a simple interface for simple tasks such as to-do list, navigation, music player and if possible, have a terminal interface to try mobile programming.
 
 ### What Works
 
@@ -20,7 +20,7 @@ The idea was simple: use a legacy BlackBerry Z10 as a minimal productivity works
 
 ### What Doesn't (And Why I Stopped)
 
-The original goal was to have a "Linux-like" setup on the phone for minimal productivity. But here's the thing: implementing that would reintroduce the same complexity and distractions I was trying to avoid. The simplest viable setup—Z10 as a web client to a laptop—already requires discipline and setup effort.
+The original goal was to have a "Linux-like" setup on the phone for minimal productivity. But here's the thing: implementing that would reintroduce the same complexity and distractions I was trying to avoid. 
 
 Pushing it further began to look complicated, as I later found out from a couple of Youtube videos that having linux on my phone needed hardware chip installation and few soldering (I don't have the tools for that)
 
@@ -110,10 +110,7 @@ Uses Java's built-in `HttpServer` - no Spring Boot or other frameworks. Just pla
 
 Honestly? I was curious if an old phone could be repurposed. The answer is "technically yes, but practically no." The BB10 browser is too limited, and the setup complexity defeats the purpose of minimalism.
 
-This project serves as:
-- A working proof-of-concept
-- A learning exercise in networking and Java HTTP servers
-- A reminder that sometimes the simplest solution is to stop when you've proven the concept
+This project serves as a checkpoint for the developers who wishes to take it forward with other andriod devices (blackberry just sucks).
 
 ## Limitations
 
