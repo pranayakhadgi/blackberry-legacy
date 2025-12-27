@@ -24,7 +24,7 @@ public class ServerMain {
     public static void main(String[] args) throws IOException {
         loadAllChecklists();
         
-        int port = 8080;
+        int port = 8080; // TODO: make this configurable maybe?
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 
         server.createContext("/", new HomeHandler());
@@ -34,7 +34,7 @@ public class ServerMain {
         server.createContext("/checklist", new ChecklistHandler());
         server.createContext("/navigator", new NavigatorHandler());
 
-        server.setExecutor(null);
+        server.setExecutor(null); // using default executor
         System.out.println("Project BlackBerry server running on port " + port);
         System.out.println("Endpoints:");
         System.out.println("  GET  /              (Home/Setup)");
@@ -44,6 +44,7 @@ public class ServerMain {
         System.out.println("  GET  /checklist?week=2025-W1");
         System.out.println("  GET  /navigator");
         server.start();
+        // server is now running
     }
 
     private static void loadAllChecklists() {
@@ -330,8 +331,7 @@ public class ServerMain {
                 WeeklyChecklist checklist = objectMapper.readValue(jsonBody, WeeklyChecklist.class);
                 checklists.put(week, checklist);
                 
-                // Save to disk
-                ChecklistStorage.saveChecklist(checklist);
+                ChecklistStorage.saveChecklist(checklist); // persist to disk
                 
                 String response = "Imported and saved checklist for week: " + week;
                 sendResponse(exchange, 200, response, "text/plain");
@@ -353,10 +353,10 @@ public class ServerMain {
 
             String week = getQueryParam(exchange, "week");
             if (week == null || week.isEmpty()) {
-                week = WeekUtils.getCurrentWeekId(); // Auto-detect current week
+                week = WeekUtils.getCurrentWeekId(); // auto detect if not specified
             }
 
-            // Try to load from memory, then disk, then create default
+            // try memory first, then disk, then default
             WeeklyChecklist checklist = checklists.get(week);
             if (checklist == null) {
                 checklist = ChecklistStorage.loadChecklist(week);
@@ -444,7 +444,7 @@ public class ServerMain {
                 html.append("        </div>\n");
             }
 
-            // Display resources section
+            // display resources section if they exist
             if (checklist.getResources() != null && !checklist.getResources().isEmpty()) {
                 html.append("        <div class=\"day\" style=\"margin-top: 40px;\">\n");
                 html.append("            <h2>Resources for This Week</h2>\n");
@@ -465,7 +465,7 @@ public class ServerMain {
 
             html.append("    </div>\n");
             html.append("    <script>\n");
-            html.append("        // Load saved checkbox states from localStorage\n");
+            html.append("        // load saved checkbox states from localStorage\n");
             html.append("        function loadTaskStates() {\n");
             html.append("            var checkboxes = document.querySelectorAll('input[type=\"checkbox\"]');\n");
             html.append("            checkboxes.forEach(function(cb) {\n");
@@ -477,7 +477,7 @@ public class ServerMain {
             html.append("            });\n");
             html.append("        }\n");
             html.append("        \n");
-            html.append("        // Save checkbox state to localStorage\n");
+            html.append("        // save checkbox state to localStorage\n");
             html.append("        function saveTaskState(taskId, completed) {\n");
             html.append("            localStorage.setItem(taskId, completed ? 'true' : 'false');\n");
             html.append("            var taskDiv = document.getElementById(taskId).closest('.task');\n");
@@ -488,7 +488,7 @@ public class ServerMain {
             html.append("            }\n");
             html.append("        }\n");
             html.append("        \n");
-            html.append("        // Load states when page loads\n");
+            html.append("        // load states when page loads\n");
             html.append("        window.onload = loadTaskStates;\n");
             html.append("    </script>\n");
             html.append("</body>\n");
@@ -508,12 +508,12 @@ public class ServerMain {
                     String[] months = {"", "January", "February", "March", "April", "May", "June",
                                       "July", "August", "September", "October", "November", "December"};
                     String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-                    // Simple weekday calculation (Zeller's congruence approximation)
+                    // get weekday from date
                     java.time.LocalDate date = java.time.LocalDate.of(year, month, day);
                     return weekdays[date.getDayOfWeek().getValue() % 7] + ", " + months[month] + " " + day + ", " + year;
                 }
             } catch (Exception e) {
-                // Fall through
+                // if parsing fails, just return original string
             }
             return dateStr;
         }

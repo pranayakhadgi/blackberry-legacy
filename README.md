@@ -1,37 +1,37 @@
-# Project BlackBerry: Minimal Productivity Terminal on Legacy Hardware
+# A simple experiment on my old blackberry Z10
 
 ## What This Is
 
 This started as a curiosity experiment: **could my old BlackBerry Z10 sitting in a drawer actually be useful?**
 
-The answer: sort of, but not really. This project is a working MVP that demonstrates the concept, but I intentionally stopped here once the core limitations became clear.
+The answer: sort of, but not really. This experiment cleared most of my curiosity, but I intentionally stopped here once the core limitations became clear.
 
 ## The Experiment
 
-The idea was simple: use a legacy BlackBerry Z10 as a minimal productivity terminal by offloading all computation to a Java HTTP server running on my laptop. The phone would act purely as a thin web client—no apps, no distractions, just a simple interface for checklists and curated resources.
+The idea was simple: use a legacy BlackBerry Z10 as a minimal productivity workspace by offloading all computation to a Java HTTP server running on my laptop. In a simple sense, I wanted to make a dumb phone for a good digital detox. The phone would act purely as a thin web client—no apps, no distractions, just a simple interface for checklists and curated resources.
 
 ### What Works
 
-- ✅ Z10 browser successfully connects to laptop over WiFi
-- ✅ Java server serves HTML pages optimized for BB10's old WebKit browser
-- ✅ Weekly checklist system with localStorage persistence
-- ✅ Resource navigator with curated links
-- ✅ File-based persistence (checklists saved to disk)
+- Z10 browser successfully connects to laptop over WiFi
+- Java server serves HTML pages optimized for BB10's old WebKit browser
+- Weekly checklist system with localStorage persistence
+- Resource navigator with curated links
+- File-based persistence (checklists saved to disk)
 
 ### What Doesn't (And Why I Stopped)
 
 The original goal was to have a "Linux-like" setup on the phone for minimal productivity. But here's the thing: implementing that would reintroduce the same complexity and distractions I was trying to avoid. The simplest viable setup—Z10 as a web client to a laptop—already requires discipline and setup effort.
 
-Pushing further toward "Linux everywhere" began to contradict the simplicity goals. So I stopped at a working MVP rather than over-engineer something that wouldn't actually help.
+Pushing it further began to look complicated, as I later found out from a couple of Youtube videos that having linux on my phone needed hardware chip installation and few soldering (I don't have the tools for that)
 
 ## Architecture
 
 ```
-┌─────────────────────┐       HTTP        ┌──────────────────────┐
-│ BlackBerry Z10     │  <─────────────> │ Pop!_OS Laptop       │
-│ (BB10 Browser)     │                  │ (Java 17 Server)     │
-│                     │                  │ Port 8080            │
-└─────────────────────┘                  └──────────────────────┘
+┌─────────────────────┐                   ┌──────────────────────┐
+│ BlackBerry Z10      │        HTTP       │ Pop!_OS Laptop       │
+│ (BB10 Browser)      │   <─────────────> │ (Java 17 Server)     │
+│                     │                   │ Port 8080            │
+└─────────────────────┘                   └──────────────────────┘
 ```
 
 - **Z10**: Legacy BlackBerry 10 browser, connects via WiFi
@@ -104,7 +104,7 @@ src/main/java/com/projectblackberry/
     └── ResourceLink.java
 ```
 
-Uses Java's built-in `HttpServer`—no Spring Boot or other frameworks. Just plain Java 17.
+Uses Java's built-in `HttpServer` - no Spring Boot or other frameworks. Just plain Java 17. I kept it simple on purpose.
 
 ## Why This Exists
 
@@ -128,11 +128,5 @@ This project serves as:
 - Use a more capable device with better browser
 - Or just accept that modern phones exist for a reason
 
-## License
 
-MIT (or whatever you prefer—it's your code)
-
----
-
-**TL;DR**: Built a working prototype to see if an old phone could be useful. It works, but the limitations made it clear this wasn't the right approach. Stopped at MVP. Here's the code.
 

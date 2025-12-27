@@ -39,6 +39,7 @@ public class ChecklistStorage {
                 System.out.println("Loaded checklist from: " + filePath);
                 return checklist;
             }
+            // file doesn't exist, return null
         } catch (Exception e) {
             System.err.println("Error loading checklist " + weekId + ": " + e.getMessage());
         }
